@@ -1,7 +1,64 @@
 {
   "version": 1,
-  "projects": {},
+  "projects": {
+    "starwars-store": {
+      "root": "apps/starwars-store",
+      "sourceRoot": "apps/starwars-store/src",
+      "projectType": "application",
+      "prefix": "starwars-store",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/starwars-store",
+            "main": "apps/starwars-store/src/main.ts",
+            "tsConfig": "apps/starwars-store/tsconfig.app.json",
+            "assets": ["apps/starwars-store/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/starwars-store/src/environments/environment.ts",
+                  "with": "apps/starwars-store/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "starwars-store:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/starwars-store/tsconfig.app.json",
+              "apps/starwars-store/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/starwars-store/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/starwars-store/jest.config.js",
+            "tsConfig": "apps/starwars-store/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
+  },
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
-  }
+    "defaultCollection": "@nrwl/nest"
+  },
+  "defaultProject": "starwars-store"
 }
