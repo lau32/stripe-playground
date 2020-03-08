@@ -2,7 +2,9 @@
   "name": "stripe-playground",
   "version": "0.0.1",
   "license": "MIT",
-  "author": {"name": "Laur"},
+  "author": {
+    "name": "Laur"
+  },
   "scripts": {
     "ng": "ng",
     "nx": "nx",
@@ -32,7 +34,8 @@
     "@nestjs/common": "^6.8.3",
     "@nestjs/core": "^6.8.3",
     "@nestjs/platform-express": "^6.8.3",
-    "reflect-metadata": "^0.1.13"
+    "reflect-metadata": "^0.1.13",
+    "stripe": "^8.29.0"
   },
   "devDependencies": {
     "@angular/cli": "9.0.1",
