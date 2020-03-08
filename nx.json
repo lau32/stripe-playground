@@ -13,6 +13,9 @@
   "projects": {
     "starwars-store": {
       "tags": ["stripe"]
+    },
+    "frontend": {
+      "tags": []
     }
   }
 }

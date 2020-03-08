@@ -55,10 +55,115 @@
           }
         }
       }
+    },
+    "frontend": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/frontend",
+      "sourceRoot": "apps/frontend/src",
+      "prefix": "stripe-playground",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/frontend",
+            "index": "apps/frontend/src/index.html",
+            "main": "apps/frontend/src/main.ts",
+            "polyfills": "apps/frontend/src/polyfills.ts",
+            "tsConfig": "apps/frontend/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/frontend/src/favicon.ico",
+              "apps/frontend/src/assets"
+            ],
+            "styles": ["apps/frontend/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/frontend/src/environments/environment.ts",
+                  "with": "apps/frontend/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "frontend:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "frontend:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/frontend/tsconfig.app.json",
+              "apps/frontend/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/frontend/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/frontend/jest.config.js",
+            "tsConfig": "apps/frontend/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/frontend/src/test-setup.ts"
+          }
+        }
+      }
     }
   },
   "cli": {
     "defaultCollection": "@nrwl/nest"
   },
-  "defaultProject": "starwars-store"
+  "defaultProject": "starwars-store",
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  }
 }
