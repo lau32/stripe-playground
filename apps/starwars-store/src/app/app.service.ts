@@ -28,7 +28,8 @@ export class AppService {
 
   async getCheckoutSession() {
     const items = await this.getLineItems();
+    const { id } = await this.stripeService.createCheckoutSession(items);
 
-    return this.stripeService.createCheckoutSession(items);
+    return { id };
   }
 }

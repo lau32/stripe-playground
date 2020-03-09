@@ -17,8 +17,8 @@ export class StripeService {
     return this.stripe.checkout.sessions.create({
       payment_method_types: ['card', 'ideal'],
       line_items,
-      success_url: 'localhost:4200/success?session_id={CHECKOUT_SESSION_ID}',
-      cancel_url: 'localhost:4200/cancel'
+      success_url: 'http://localhost:4200/success?session_id={CHECKOUT_SESSION_ID}',
+      cancel_url: 'http://localhost:4200/cancel'
     });
   }
 }

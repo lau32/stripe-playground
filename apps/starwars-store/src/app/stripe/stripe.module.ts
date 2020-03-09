@@ -5,7 +5,8 @@ import { StripeService } from './stripe.service';
 
 @Module({
   imports: [ConfigModule.forRoot()],
-  providers: [StripeService]
+  providers: [StripeService],
+  exports: [StripeService]
 })
 export class StripeModule {
 }
