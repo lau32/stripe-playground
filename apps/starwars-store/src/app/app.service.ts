@@ -1,32 +1,30 @@
 import { Injectable } from '@nestjs/common';
 
 import { LineItem, StripeService } from './stripe/stripe.service';
-import { StarWarsService } from './star-wars/star-wars.service';
+
+const coffeeTypes = [
+  'Café Con Hielo', 'Cortado', 'Espresso con panna', 'Flat White', 'Macchiato',
+  'Cafe Cubano', 'Kopi susu', 'Galao', 'Doppio', 'Guillermo'];
 
 @Injectable()
 export class AppService {
-  constructor(
-    private readonly swService: StarWarsService,
-    private readonly stripeService: StripeService) {
-  }
+  constructor(private readonly stripeService: StripeService) { }
 
   private async getLineItems(): Promise<Array<LineItem>> {
-    const characters = await this.swService.getCharacters();
-    const numberOfCharacters =
-      Math.floor((Math.random() * 10) % characters.length);
+    const numberOfItems =
+      Math.floor((Math.random() * 10) % coffeeTypes.length);
 
-    return characters
-      .slice(0, numberOfCharacters)
-      .map((character) => ({
-        name: character.name,
-        description: `${character.name} figure`,
-        amount: Math.ceil((Math.random() * 10000) % 10000),
+    return coffeeTypes
+      .slice(0, numberOfItems)
+      .map((coffeeType) => ({
+        name: coffeeType,
+        amount: Math.ceil((Math.random() * 1000) % 1000),
         currency: 'eur',
         quantity: 1
       }));
   }
 
-  async getCheckoutSession() {
+  async getCheckoutSessionId() {
     const items = await this.getLineItems();
     const { id } = await this.stripeService.createCheckoutSession(items);
 

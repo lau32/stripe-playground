@@ -8,6 +8,6 @@ export class AppController {
 
   @Get('session')
   getCheckoutSession() {
-    return this.appService.getCheckoutSession();
+    return this.appService.getCheckoutSessionId();
   }
 }

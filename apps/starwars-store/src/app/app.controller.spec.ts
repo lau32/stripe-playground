@@ -18,7 +18,7 @@ describe('AppController', () => {
   describe('getCheckoutSession', () => {
     it('should return session', () => {
       const service: AppService = app.get(AppService);
-      jest.spyOn(service, 'getCheckoutSession').mockResolvedValue({} as any);
+      jest.spyOn(service, 'getCheckoutSessionId').mockResolvedValue({} as any);
 
       const appController = app.get<AppController>(AppController);
       expect(appController.getCheckoutSession()).toBeTruthy();

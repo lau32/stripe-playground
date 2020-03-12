@@ -2,7 +2,6 @@ import { Test, TestingModule } from '@nestjs/testing';
 
 import { AppService } from './app.service';
 import { StripeService } from './stripe/stripe.service';
-import { StarWarsService } from './star-wars/star-wars.service';
 
 jest.mock('./stripe/stripe.service');
 
@@ -12,7 +11,7 @@ describe('AppService', () => {
 
   beforeAll(async () => {
     app = await Test.createTestingModule({
-      providers: [AppService, StarWarsService, StripeService]
+      providers: [AppService, StripeService]
     }).compile();
 
     service = app.get(AppService);
@@ -20,15 +19,11 @@ describe('AppService', () => {
 
   it('should return session', async () => {
     const result = { test: 'mock' };
-    const mockCharacters = [{ name: 'mock' }];
-    const swService = app.get(StarWarsService);
-    jest.spyOn(swService, 'getCharacters')
-      .mockResolvedValue(mockCharacters);
     const stripeService = app.get(StripeService);
     jest.spyOn(stripeService, 'createCheckoutSession')
       .mockResolvedValue(result as any);
 
-    const session = await service.getCheckoutSession();
+    const session = await service.getCheckoutSessionId();
 
     expect(session).toBe(result);
   });
