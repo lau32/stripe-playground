@@ -1,20 +1,20 @@
 {
   "version": 1,
   "projects": {
-    "starwars-store": {
-      "root": "apps/starwars-store",
-      "sourceRoot": "apps/starwars-store/src",
+    "coffee-store": {
+      "root": "apps/coffee-store",
+      "sourceRoot": "apps/coffee-store/src",
       "projectType": "application",
-      "prefix": "starwars-store",
+      "prefix": "coffee-store",
       "schematics": {},
       "architect": {
         "build": {
           "builder": "@nrwl/node:build",
           "options": {
-            "outputPath": "dist/apps/starwars-store",
-            "main": "apps/starwars-store/src/main.ts",
-            "tsConfig": "apps/starwars-store/tsconfig.app.json",
-            "assets": ["apps/starwars-store/src/assets"]
+            "outputPath": "dist/apps/coffee-store",
+            "main": "apps/coffee-store/src/main.ts",
+            "tsConfig": "apps/coffee-store/tsconfig.app.json",
+            "assets": ["apps/coffee-store/src/assets"]
           },
           "configurations": {
             "production": {
@@ -23,8 +23,8 @@
               "inspect": false,
               "fileReplacements": [
                 {
-                  "replace": "apps/starwars-store/src/environments/environment.ts",
-                  "with": "apps/starwars-store/src/environments/environment.prod.ts"
+                  "replace": "apps/coffee-store/src/environments/environment.ts",
+                  "with": "apps/coffee-store/src/environments/environment.prod.ts"
                 }
               ]
             }
@@ -33,24 +33,24 @@
         "serve": {
           "builder": "@nrwl/node:execute",
           "options": {
-            "buildTarget": "starwars-store:build"
+            "buildTarget": "coffee-store:build"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "apps/starwars-store/tsconfig.app.json",
-              "apps/starwars-store/tsconfig.spec.json"
+              "apps/coffee-store/tsconfig.app.json",
+              "apps/coffee-store/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/starwars-store/**"]
+            "exclude": ["**/node_modules/**", "!apps/coffee-store/**"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/starwars-store/jest.config.js",
-            "tsConfig": "apps/starwars-store/tsconfig.spec.json",
+            "jestConfig": "apps/coffee-store/jest.config.js",
+            "tsConfig": "apps/coffee-store/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }
@@ -156,7 +156,7 @@
   "cli": {
     "defaultCollection": "@nrwl/nest"
   },
-  "defaultProject": "starwars-store",
+  "defaultProject": "coffee-store",
   "schematics": {
     "@nrwl/angular:application": {
       "unitTestRunner": "jest",
