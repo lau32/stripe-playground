@@ -14,7 +14,9 @@
             "outputPath": "dist/apps/coffee-store",
             "main": "apps/coffee-store/src/main.ts",
             "tsConfig": "apps/coffee-store/tsconfig.app.json",
-            "assets": ["apps/coffee-store/src/assets"]
+            "assets": [
+              "apps/coffee-store/src/assets"
+            ]
           },
           "configurations": {
             "production": {
@@ -43,7 +45,10 @@
               "apps/coffee-store/tsconfig.app.json",
               "apps/coffee-store/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/coffee-store/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/coffee-store/**"
+            ]
           }
         },
         "test": {
@@ -80,7 +85,10 @@
               "apps/frontend/src/favicon.ico",
               "apps/frontend/src/assets"
             ],
-            "styles": ["apps/frontend/src/styles.scss"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
+              "apps/frontend/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -138,7 +146,10 @@
               "apps/frontend/tsconfig.app.json",
               "apps/frontend/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/frontend/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/frontend/**"
+            ]
           }
         },
         "test": {
@@ -156,7 +167,7 @@
   "cli": {
     "defaultCollection": "@nrwl/nest"
   },
-  "defaultProject": "coffee-store",
+  "defaultProject": "frontend",
   "schematics": {
     "@nrwl/angular:application": {
       "unitTestRunner": "jest",

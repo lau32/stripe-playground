@@ -4,6 +4,8 @@ import { Stripe } from 'stripe';
 
 export type LineItem = Stripe.Checkout.SessionCreateParams.LineItem;
 
+const baseUrl = 'http://localhost:4200';
+
 @Injectable()
 export class StripeService {
   private config: Stripe.StripeConfig = null;
@@ -17,8 +19,8 @@ export class StripeService {
     return this.stripe.checkout.sessions.create({
       payment_method_types: ['card', 'ideal'],
       line_items,
-      success_url: 'http://localhost:4200/success?session_id={CHECKOUT_SESSION_ID}',
-      cancel_url: 'http://localhost:4200/cancel'
+      success_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${baseUrl}/cancel`
     });
   }
 }

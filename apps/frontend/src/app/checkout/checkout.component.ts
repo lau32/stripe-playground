@@ -1,21 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
 import { CheckoutService } from './checkout.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'stripe-playground-checkout',
-  templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.scss']
+  template: `
+      <div style="display: flex; justify-content: center; align-items: center;">
+          <button mat-button mat-raised-button
+                  (click)="handleClick()">Go to checkout
+          </button>
+      </div>`
 })
-export class CheckoutComponent implements OnInit {
-  sessionId$: Observable<string> = this.checkoutService.getSession();
-
-  constructor(private checkoutService: CheckoutService) { }
-
-  ngOnInit(): void {
+export class CheckoutComponent {
+  constructor(private checkoutService: CheckoutService) {
   }
 
-  async handleClick(sessionId: string) {
-    await this.checkoutService.goToCheckout(sessionId)
+  handleClick() {
+    this.checkoutService.goToCheckout()
+      .subscribe();
   }
 }
