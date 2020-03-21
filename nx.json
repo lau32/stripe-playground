@@ -10,5 +10,12 @@
     "tslint.json": "*",
     "nx.json": "*"
   },
-  "projects": {}
+  "projects": {
+    "coffee-store": {
+      "tags": ["stripe"]
+    },
+    "frontend": {
+      "tags": []
+    }
+  }
 }
