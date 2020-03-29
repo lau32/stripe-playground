@@ -1,7 +1,22 @@
 {
   "extends": "../../tslint.json",
   "rules": {
-    "directive-selector": [true, "attribute", "stripePlayground", "camelCase"],
-    "component-selector": [true, "element", "stripe-playground", "kebab-case"]
+    "directive-selector": [
+      true,
+      "attribute",
+      "stripePlayground",
+      "camelCase"
+    ],
+    "component-selector": [
+      true,
+      "element",
+      "stripe-playground",
+      "kebab-case"
+    ]
+  },
+  "linterOptions": {
+    "exclude": [
+      "!**/*"
+    ]
   }
 }
