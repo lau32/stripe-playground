@@ -14,9 +14,8 @@
             "outputPath": "dist/apps/coffee-store",
             "main": "apps/coffee-store/src/main.ts",
             "tsConfig": "apps/coffee-store/tsconfig.app.json",
-            "assets": [
-              "apps/coffee-store/src/assets"
-            ]
+            "assets": ["apps/coffee-store/src/assets"],
+            "buildLibsFromSource": true
           },
           "configurations": {
             "production": {
@@ -45,10 +44,7 @@
               "apps/coffee-store/tsconfig.app.json",
               "apps/coffee-store/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/coffee-store/**"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/coffee-store/**"]
           }
         },
         "test": {
@@ -146,10 +142,7 @@
               "apps/frontend/tsconfig.app.json",
               "apps/frontend/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/frontend/**"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/frontend/**"]
           }
         },
         "test": {
